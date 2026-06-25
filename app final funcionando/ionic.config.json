@@ -1,0 +1,7 @@
+{
+  "name": "miIcono",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular-standalone"
+}

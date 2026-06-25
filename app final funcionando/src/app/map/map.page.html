@@ -1,0 +1,45 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/home"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Mi Ubicación</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" [scrollY]="false">
+
+  <!-- Cargando ubicación -->
+  @if (cargando) {
+    <div class="status-container">
+      <ion-spinner name="crescent" color="primary"></ion-spinner>
+      <p>Obteniendo ubicación...</p>
+    </div>
+  }
+
+  <!-- Permiso denegado -->
+  @if (permisoDenegado) {
+    <div class="status-container">
+      <ion-icon name="location-outline" class="denied-icon"></ion-icon>
+      <h3>Permiso de ubicación requerido</h3>
+      <p>Habilita el permiso de ubicación en la configuración de tu dispositivo.</p>
+      <ion-button (click)="reintentar()" color="primary" shape="round">
+        <ion-icon slot="start" name="refresh"></ion-icon>
+        Reintentar
+      </ion-button>
+    </div>
+  }
+
+  <!-- Contenedor del mapa -->
+  <div #mapContainer class="map-container" [class.map-hidden]="cargando || permisoDenegado"></div>
+
+  <!-- Tarjeta de coordenadas -->
+  @if (latitud !== null && !cargando && !permisoDenegado) {
+    <div class="coords-bar">
+      <ion-icon name="navigate" color="primary"></ion-icon>
+      <span><strong>Lat:</strong> {{ latitud | number:'1.6-6' }}</span>
+      <span><strong>Lng:</strong> {{ longitud | number:'1.6-6' }}</span>
+    </div>
+  }
+
+</ion-content>

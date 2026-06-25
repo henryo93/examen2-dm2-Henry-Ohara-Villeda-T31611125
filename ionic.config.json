@@ -1,7 +1,0 @@
-{
-  "name": "examen-firebase",
-  "integrations": {
-    "capacitor": {}
-  },
-  "type": "angular-standalone"
-}

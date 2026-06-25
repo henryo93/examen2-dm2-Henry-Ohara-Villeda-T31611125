@@ -1,0 +1,67 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="primary">
+    <ion-title>Home</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+
+  <!-- Iconos de navegación -->
+  <div class="nav-icons">
+    <div class="nav-card" (click)="goToMap()">
+      <ion-icon name="map"></ion-icon>
+      <span>Mapa</span>
+    </div>
+    <div class="nav-card active" (click)="goToGallery()">
+      <ion-icon name="images"></ion-icon>
+      <span>Galería</span>
+    </div>
+  </div>
+
+  <!-- Sección Galería / Cámara -->
+  <ion-card class="gallery-card">
+    <ion-card-header>
+      <ion-card-title>Seleccionar imagen</ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content>
+
+      <!-- Input de mensaje -->
+      <ion-item lines="full" class="input-item">
+        <ion-label position="floating">Escribe un mensaje</ion-label>
+        <ion-input [(ngModel)]="mensaje" placeholder="Ingresa tu mensaje aquí..."></ion-input>
+      </ion-item>
+
+      <!-- Botón para abrir cámara o galería -->
+      <div class="btn-row">
+        <ion-button expand="block" color="primary" (click)="seleccionarImagen()">
+          <ion-icon slot="start" name="camera"></ion-icon>
+          Seleccionar imagen
+        </ion-button>
+      </div>
+
+      <!-- Preview de imagen (solo si hay imagen seleccionada) -->
+      <div class="image-preview" *ngIf="imagenSeleccionada">
+        <img [src]="imagenSeleccionada" alt="Imagen seleccionada" />
+      </div>
+
+      <!-- Datos del resultado -->
+      <ion-list *ngIf="imagenSeleccionada" class="result-list">
+        <ion-item>
+          <ion-label>
+            <h3>Mensaje</h3>
+            <p>{{ mensaje || 'Sin mensaje' }}</p>
+          </ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-label>
+            <h3>Estado</h3>
+            <p>Imagen cargada correctamente ✓</p>
+          </ion-label>
+        </ion-item>
+      </ion-list>
+
+    </ion-card-content>
+  </ion-card>
+
+</ion-content>

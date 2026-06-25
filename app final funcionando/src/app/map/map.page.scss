@@ -1,0 +1,78 @@
+ion-content {
+  --overflow: hidden;
+}
+
+// Contenedor principal del mapa
+.map-container {
+  width: 100%;
+  height: calc(100vh - 56px - 52px); // header + coords-bar
+  min-height: 300px;
+
+  &.map-hidden {
+    display: none;
+  }
+}
+
+// Pantalla de estado (cargando / permiso denegado)
+.status-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: calc(100vh - 56px);
+  padding: 32px;
+  text-align: center;
+  gap: 16px;
+
+  ion-spinner {
+    width: 48px;
+    height: 48px;
+  }
+
+  .denied-icon {
+    font-size: 72px;
+    color: #e74c3c;
+  }
+
+  h3 {
+    font-size: 20px;
+    font-weight: 700;
+    color: #333;
+    margin: 0;
+  }
+
+  p {
+    font-size: 15px;
+    color: #666;
+    margin: 0;
+    max-width: 280px;
+  }
+}
+
+// Barra inferior con coordenadas
+.coords-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 52px;
+  background: white;
+  border-top: 1px solid #e0e0e0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  padding: 0 16px;
+  box-shadow: 0 -2px 8px rgba(0,0,0,0.08);
+  z-index: 100;
+
+  ion-icon {
+    font-size: 18px;
+    flex-shrink: 0;
+  }
+
+  span {
+    font-size: 13px;
+    color: #333;
+  }
+}
