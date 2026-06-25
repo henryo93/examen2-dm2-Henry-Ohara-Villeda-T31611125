@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { IonApp, IonRouterOutlet } from '@ionic/angular/standalone';
-import { SplashScreen } from '@capacitor/splash-screen';
 
 @Component({
   selector: 'app-root',
@@ -8,11 +7,5 @@ import { SplashScreen } from '@capacitor/splash-screen';
   imports: [IonApp, IonRouterOutlet],
 })
 export class AppComponent {
-  constructor() {
-    this.initApp();
-  }
-
-  async initApp() {
-    await SplashScreen.hide();
-  }
+  constructor() {}
 }
